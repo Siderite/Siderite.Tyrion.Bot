@@ -161,9 +161,11 @@ namespace Siderite.Tyrion.Bot
             var context = new SocketCommandContext(_client, message);
             if (pos.HasValue)
             {
+                // if this is determined to be a command for Tyrion, execute command with the text without prefix
                 await _commandService.ExecuteAsync(context, message.Content[pos.Value..],_services);
             } else
             {
+                // else execute command "parse" with the message content as parameters
                 await _commandService.ExecuteAsync(context, "parse "+message.Content, _services);
             }
         }
