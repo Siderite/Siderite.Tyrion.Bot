@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Siderite.Tyrion.Bot</name>
+    </assembly>
+    <members>
+        <member name="T:Siderite.Tyrion.Bot.TyrionBootstrap">
+            <summary>
+            Extension methods for a .NET Core web or API site
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBootstrap.UseTyrionBot(Microsoft.AspNetCore.Hosting.IWebHostBuilder)">
+            <summary>
+            Use Tyrion bot for <see cref="T:Microsoft.AspNetCore.Hosting.IWebHostBuilder"/>
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBootstrap.UseTyrionBot(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Use Tyrion bot for <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/> (.Net 5.0)
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siderite.Tyrion.Bot.TyrionBot">
+            <summary>
+            A sample Discord bot to be used inside ASP.Net Core web projects
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.#ctor(Discord.Commands.CommandService,System.IServiceProvider,Siderite.Tyrion.Bot.TyrionSettings,Microsoft.Extensions.Logging.ILogger{Siderite.Tyrion.Bot.TyrionBot})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="commandService"></param>
+            <param name="services"></param>
+            <param name="settings"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.RunAsync">
+            <summary>
+            Executed when the bot starts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.commandExecuted(Discord.Optional{Discord.Commands.CommandInfo},Discord.Commands.ICommandContext,Discord.Commands.IResult)">
+            <summary>
+            Executed when a bot command is executed (a chat command starting with Tyr or Tyrion)
+            </summary>
+            <param name="command"></param>
+            <param name="context"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.ready">
+            <summary>
+            Executed when the bot is loaded, logged in and ready to receive commands
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.messageReceived(Discord.WebSocket.SocketMessage)">
+            <summary>
+            executed when a Discord message is received
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.processMessage(Discord.WebSocket.SocketMessage)">
+            <summary>
+            Handle Discord messages
+            </summary>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.log(Discord.LogMessage)">
+            <summary>
+            Handles discord client and command service logging
+            Will also be used manually in code in some cases
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.StopAsync">
+            <summary>
+            Executed when the bot shuts down
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.Microsoft#Extensions#Hosting#IHostedService#StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Triggered when the application host is ready to start the service.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.Microsoft#Extensions#Hosting#IHostedService#StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Triggered when the application host is performing a graceful shutdown.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.Dispose">
+            <summary>
+            Disposable implementation disposes the Discord client
+            </summary>
+        </member>
+        <member name="T:Siderite.Tyrion.Bot.TyrionCommands">
+            <summary>
+            Class holding the commands that Tyrion answers to
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.#ctor(Siderite.Tyrion.Bot.TyrionSettings,Microsoft.Extensions.Logging.ILogger{Siderite.Tyrion.Bot.TyrionCommands})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="settings"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Translate(System.String)">
+            <summary>
+            "translate on/off" will turn on or off translating of metric/imperial units
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.YahooEmoticons(System.String)">
+            <summary>
+            "ym on/off" will turn on or off interpretations of Yahoo Messenger emoticons
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Help">
+            <summary>
+            Response to "help"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Hello">
+            <summary>
+            Response to "hello"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Play">
+            <summary>
+            Reposne to "play"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Fart">
+            <summary>
+            "fart" sends an embedded fart wav.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Parse(System.String)">
+            <summary>
+            This command will be executed whenever a command does not match any other defined command
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.InitializeYahooEmoticons">
+            <summary>
+            Loads the Yahoo Messenger emoticon resources
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.RecognizeName(System.String)">
+            <summary>
+            if the content of the message (not the prefix) contains Tyrion's name, it will add dog and love reactions
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.RecognizeBone(System.String)">
+            <summary>
+            if there is a bone in the message content, Tyrion will response with dog, love and bone
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.AddYahooEmoticons(System.String)">
+            <summary>
+            if the message content contains one of the defined Yahoo Messenger emoticons, send the emoticon image
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.TranslateUnits(System.String)">
+            <summary>
+            Translates imperial units to metric and viceversa
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.CheckAdmin">
+            <summary>
+            The admin user defined in appsettings.json will be compared to the source of the message
+            If they are different, then an exception will be raised
+            (use in Admin commands)
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionCommands.GetParameters(System.String)">
+            <summary>
+            Used to get more complex parameters like a "b c" (in this case the parameter values will be "a" and "b c")
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siderite.Tyrion.Bot.TyrionExtensions">
+            <summary>
+            Extension methods used in the projects
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionExtensions.GetManifestStream(System.Reflection.Assembly,System.String)">
+            <summary>
+            Get a manifest stream from resources by name
+            </summary>
+            <param name="assembly"></param>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionExtensions.SendManifestResourceAsync(Discord.IMessageChannel,System.Reflection.Assembly,System.String,System.String)">
+            <summary>
+            Send a manifest resource to a Discord channel
+            </summary>
+            <param name="channel"></param>
+            <param name="assembly"></param>
+            <param name="path"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siderite.Tyrion.Bot.TyrionSettings">
+            <summary>
+            Defines the information saved in appsettings.json
+            </summary>
+        </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionSettings.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Automatically reads the values from configuration
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="P:Siderite.Tyrion.Bot.TyrionSettings.Token">
+            <summary>
+            Discord bot channel
+            </summary>
+        </member>
+        <member name="P:Siderite.Tyrion.Bot.TyrionSettings.Translate">
+            <summary>
+            Initial value for metric/imperial unit translation
+            </summary>
+        </member>
+        <member name="P:Siderite.Tyrion.Bot.TyrionSettings.YmEnabled">
+            <summary>
+            Initial value for Yahoo Messenger emoticons support
+            </summary>
+        </member>
+        <member name="P:Siderite.Tyrion.Bot.TyrionSettings.AdminUser">
+            <summary>
+            The Discord username of the admin user
+            </summary>
+        </member>
+    </members>
+</doc>
