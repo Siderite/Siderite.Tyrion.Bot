@@ -321,10 +321,15 @@ namespace Siderite.Tyrion.Bot
         /// </summary>
         private void CheckAdmin()
         {
-            if (Context.User.ToString() != _settings.AdminUser)
+            if (!SameUser(Context.User, _settings.AdminUser))
             {
                 throw new Exception("No access to this command");
             }
+        }
+
+        private bool SameUser(IUser user, string adminUser)
+        {
+            return $"{user.Username}#{user.Discriminator}" == adminUser;
         }
 
         /// <summary>

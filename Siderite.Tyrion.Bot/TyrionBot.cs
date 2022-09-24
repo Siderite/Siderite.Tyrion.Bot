@@ -152,8 +152,8 @@ namespace Siderite.Tyrion.Bot
             else
             {
                 // if it's not a match, but it's sent on the private channel of the bot, it doesn't need a prefix
-                var dmChannel = await message.Author.GetOrCreateDMChannelAsync();
-                if (message.Channel==dmChannel)
+                var dmChannel = await message.Author.CreateDMChannelAsync();
+                if (message.Channel.Id == dmChannel.Id)
                 {
                     pos = 0;
                 }
