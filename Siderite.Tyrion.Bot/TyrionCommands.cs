@@ -115,7 +115,7 @@ namespace Siderite.Tyrion.Bot
         }
 
         /// <summary>
-        /// Reposne to "play"
+        /// Reponse to "play"
         /// </summary>
         /// <returns></returns>
         [Command("play")]

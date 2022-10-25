@@ -65,6 +65,15 @@
             <param name="message"></param>
             <returns></returns>
         </member>
+        <member name="M:Siderite.Tyrion.Bot.TyrionBot.messageUpdated(Discord.Cacheable{Discord.IMessage,System.UInt64},Discord.WebSocket.SocketMessage,Discord.WebSocket.ISocketMessageChannel)">
+            <summary>
+            executed when a Discord message is edited (note that if there are no changed in the message, this is not fired)
+            </summary>
+            <param name="messageCache"></param>
+            <param name="message"></param>
+            <param name="channel"></param>
+            <returns></returns>
+        </member>
         <member name="M:Siderite.Tyrion.Bot.TyrionBot.processMessage(Discord.WebSocket.SocketMessage)">
             <summary>
             Handle Discord messages
@@ -145,7 +154,7 @@
         </member>
         <member name="M:Siderite.Tyrion.Bot.TyrionCommands.Play">
             <summary>
-            Reposne to "play"
+            Reponse to "play"
             </summary>
             <returns></returns>
         </member>

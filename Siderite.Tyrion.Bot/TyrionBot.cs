@@ -36,7 +36,16 @@ namespace Siderite.Tyrion.Bot
             TyrionSettings settings,
             ILogger<TyrionBot> logger)
         {
-            _client = new DiscordSocketClient();
+            // this is new (because a config is even needed) and even newer that MessageContent must be specified
+            // Message content has to be enabled from the bot Discord Developer Portal
+            var config = new DiscordSocketConfig
+            {
+                GatewayIntents = GatewayIntents.AllUnprivileged
+                                | GatewayIntents.MessageContent
+                                ^ GatewayIntents.GuildInvites
+                                ^ GatewayIntents.GuildScheduledEvents
+            };
+            _client = new DiscordSocketClient(config);
             _commandService = commandService;
             _services=services;
             _settings = settings;
@@ -53,6 +62,7 @@ namespace Siderite.Tyrion.Bot
             _client.Log += log;
             _client.Ready += ready;
             _client.MessageReceived += messageReceived;
+            _client.MessageUpdated += messageUpdated;
             _commandService.Log += log;
             _commandService.CommandExecuted += commandExecuted;
             // commands will be automatically loaded from this assembly (see TyrionCommands.cs)
@@ -119,6 +129,26 @@ namespace Siderite.Tyrion.Bot
         /// <param name="message"></param>
         /// <returns></returns>
         private async Task messageReceived(SocketMessage message)
+        {
+            try
+            {
+                await processMessage(message);
+            }
+            catch (Exception ex)
+            {
+                var reply = await message.Channel.SendMessageAsync($"Error: {ex.Message}", false);
+                await reply.AddReactionAsync(new Emoji("😱"));
+            }
+        }
+
+        /// <summary>
+        /// executed when a Discord message is edited (note that if there are no changed in the message, this is not fired)
+        /// </summary>
+        /// <param name="messageCache"></param>
+        /// <param name="message"></param>
+        /// <param name="channel"></param>
+        /// <returns></returns>
+        private async Task messageUpdated(Cacheable<IMessage, ulong> messageCache, SocketMessage message, ISocketMessageChannel channel)
         {
             try
             {
@@ -208,6 +238,7 @@ namespace Siderite.Tyrion.Bot
             _client.Log -= log;
             _client.Ready -= ready;
             _client.MessageReceived -= messageReceived;
+            _client.MessageUpdated -= messageUpdated;
             _commandService.Log -= log;
             _commandService.CommandExecuted -= commandExecuted;
             await _client.StopAsync();

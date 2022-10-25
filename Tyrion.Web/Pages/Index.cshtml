@@ -1,10 +1,25 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Tyrion bot";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Web application to run Tyrion bot as a hosted service</h1>
+    <p>Learn about <a href="https://siderite.dev/blog/creating-discord-chat-bot-in-net/">Tyrion bot</a>.</p>
+</div>
+<hr/>
+<div>
+    <ul>
+        <label>Supported commands</label>
+        <li>translate [on|off] - check/set if translation is on</li>
+        <li>ym [on|off] - check/set if Yahoo emoticons are on</li>
+        <li>help - a placeholder command</li>
+     b   <li>hello - a placeholder command</li>
+        <li>play - randomly change bot status</li>
+        <li>fart - embedded fart sound</li>
+    </ul>
+    <p>Tyrion will recognize its name, some measurements units that he will translate to and from metric system as well as show Yahoo style emoticons</p>
+    <hr />
+    <p>In order to configure it, specify the options in appsettings.json</p>
 </div>
